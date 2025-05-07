@@ -24,7 +24,12 @@ public class MainController {
         List<Student> theStudents = students.listStudents();
         JPanel listPanel = new JPanel(new GridLayout(theStudents.size(), 5));
 
-       // listPanel.add(out);
+        for (Student student: theStudents) {
+            // grid layout
+            JLabel label = new JLabel(student.toString());
+            listPanel.add(label);
+        }
+
         container.removeAll();
         container.add(listPanel);
     }
