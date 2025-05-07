@@ -1,6 +1,6 @@
 package Database;
 
-public class Car {
+public final class Car {
     private int id;
     private int driverId;
     private int studentId;

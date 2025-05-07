@@ -9,6 +9,7 @@ public class MainFrame extends JFrame {
     private final Container container;
     private final JMenuItem menuItemHelp;
     private final JMenuItem menuItemExit;
+    private final JMenuItem menuItemListStudents;
 
     public MainFrame() {
         this.container = this.getContentPane();
@@ -23,6 +24,8 @@ public class MainFrame extends JFrame {
         JMenu menu = new JMenu("Menu");
 
 
+        this.menuItemListStudents = new JMenuItem("List Students");
+        menu.add(this.menuItemListStudents);
         this.menuItemHelp = new JMenuItem("Help");
         menu.add(this.menuItemHelp);
         this.menuItemExit = new JMenuItem("Exit");
@@ -38,10 +41,18 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
     }
 
+    Container getContainer() {
+        return this.container;
+    }
+
     void showHelpPane() {
         JPanel helpPanel = new JPanel();
         this.container.removeAll();
         this.container.add(helpPanel);
+    }
+
+    public void addActionListenerForListStudentsMenu(ActionListener l) {
+        this.menuItemListStudents.addActionListener(l);
     }
 
     public void addActionListenerForHelpMenu(ActionListener l) {

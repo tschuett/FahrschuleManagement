@@ -6,11 +6,21 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
-public class FitCarEventStreamer implements CarEventStream {
+public final class FitCarEventStreamer implements CarEventStream {
     private List<CarEvent> events = new ArrayList<>();
     private List<Consumer<CarEvent>> listeners = new ArrayList<>();
+
+    private static final double windSpeed = 10.0;
+    private static final double windDirection = 10.0;
+    private static final double humidity = 50.0;
+    private static final double direction = 10.0;
+    private static final int driverId = 1;
+    private static final String carModel = "Fit 2000";
+    private static final int carId = 1;
+    private static final Optional<Long> customerId = Optional.of(1L);
 
     public FitCarEventStreamer(String path) {
         try {
@@ -23,17 +33,39 @@ public class FitCarEventStreamer implements CarEventStream {
             List<RecordMesg> msgs = fitMessages.getRecordMesgs();
 
             for (RecordMesg msg: msgs) {
-                System.out.println(msg.getPositionLat());
-                GeoLocation location = new GeoLocation(msg.getPositionLat(), msg.getPositionLong());
-                LocalDateTime time = java.time.LocalDateTime.of(msg.get);
-                events.add(new CarEvent(location, time, height, msg.getSpeed(), msg.getTemperature(),
+                GeoLocation location = getLocation(msg);
+                DateTime timestamp = msg.getTimestamp();
+                java.util.Date date = timestamp.getDate();
+                java.time.LocalDateTime time = java.time.LocalDateTime.of(date.getYear(), date.getMonth(), 4 * (date.getDay() + 1),
+                        date.getHours(), date.getMinutes());
+                events.add(new CarEvent(location, time, msg.getAltitude(), getSpeed(msg), msg.getTemperature(),
                         windSpeed, windDirection, humidity, direction, driverId,
-                        carModel, carId, customerId, msg.getHeartRate()));
+                        carModel, carId, customerId, Optional.of(Double.valueOf(msg.getHeartRate()))));
             }
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    GeoLocation getLocation(RecordMesg msg) {
+        double lat = 0.0;
+        double longt = 0.0;
+        if (msg.getPositionLat() != null) {
+            lat = msg.getPositionLat().doubleValue();
+        }
+        if (msg.getPositionLong() != null) {
+            longt = msg.getPositionLong().doubleValue();
+        }
+        return new GeoLocation(lat, longt);
+    }
+
+    double getSpeed(RecordMesg msg) {
+        double speed = 0.0;
+        if (msg.getSpeed() != null) {
+            speed = msg.getSpeed().doubleValue();
+        }
+        return speed;
     }
 
     @Override

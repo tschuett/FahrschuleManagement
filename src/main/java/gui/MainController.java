@@ -1,28 +1,51 @@
 package gui;
 
+import Database.Student;
+import Database.Students;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class MainController {
     private MainFrame view;
 
-    MainController() {
+    public MainController() {
         this.view = new MainFrame();
+        this.view.addActionListenerForListStudentsMenu(this::listenListStudentsMenu);
         this.view.addActionListenerForHelpMenu(this::listenHelpMenu);
         this.view.addActionListenerForExitMenu(this::listenExitMenu);
     }
 
+    void listenListStudentsMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+        Students students = new Students();
+        List<Student> theStudents = students.listStudents();
+        JPanel listPanel = new JPanel(new GridLayout(theStudents.size(), 5));
+
+       // listPanel.add(out);
+        container.removeAll();
+        container.add(listPanel);
+    }
     /**
      * Listen for uses of the help menu entry. Print help text.
      * @param event
      */
     void listenHelpMenu(ActionEvent event) {
-        //JTextArea out = this.view.getShowOutput();
+        Container container = this.view.getContainer();
+        JPanel helpPanel = new JPanel();
+        JTextArea out = new JTextArea();
 
         StringBuilder sb = new StringBuilder();
         sb.append("Enter from/to accounts").append("\n");
         sb.append("Enter money amount").append("\n");
 
-        //out.setText(sb.toString());
+        out.setText(sb.toString());
+
+        helpPanel.add(out);
+        container.removeAll();
+        container.add(helpPanel);
     }
 
     /**
@@ -31,9 +54,5 @@ public class MainController {
      */
     void listenExitMenu(ActionEvent event) {
         System.exit(0);
-    }
-
-    public static void main(String[] args) {
-        MainController mainController = new MainController();
     }
 }

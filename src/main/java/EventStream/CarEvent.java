@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 
-class CarEvent {
+final class CarEvent {
     private GeoLocation location;
     private LocalDateTime timestamp;
     private double height;

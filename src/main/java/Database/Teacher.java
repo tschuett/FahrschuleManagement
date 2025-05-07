@@ -1,6 +1,6 @@
 package Database;
 
-public class Teacher {
+public final class Teacher {
     private int id;
     private String firstName;
     private String lastName;
