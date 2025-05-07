@@ -1,17 +1,12 @@
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManagerFactory;
-
-@Entity
-class Employee {
-    @Id
-    int Id;
-}
+import EventStream.FitCarEventStreamer;
 
 class Main {
 
-    public static void main(String[] args) {
-        EntityManagerFactory emf;
 
+    static final String FILE = "src/main/resources/Burg_Rabenstein.fit";
+
+    public static void main(String[] args) {
+
+        FitCarEventStreamer fitCarEventStreamer = new FitCarEventStreamer(FILE);
     }
 }

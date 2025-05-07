@@ -25,6 +25,19 @@
             <version>6.6.13.Final</version>
             <type>pom</type>
         </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.garmin</groupId>
+            <artifactId>fit</artifactId>
+            <version>[21.120.0,)</version>
+        </dependency>
+
     </dependencies>
 
     <properties>

@@ -1,3 +1,5 @@
+package EventStream;
+
 import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
