@@ -36,7 +36,8 @@ public final class FitCarEventStreamer implements CarEventStream {
                 GeoLocation location = getLocation(msg);
                 DateTime timestamp = msg.getTimestamp();
                 java.util.Date date = timestamp.getDate();
-                java.time.LocalDateTime time = java.time.LocalDateTime.of(date.getYear(), date.getMonth(), 4 * (date.getDay() + 1),
+                java.time.LocalDateTime time = java.time.LocalDateTime.of(date.getYear(), date.getMonth(),
+                        4 * (date.getDay() + 1),
                         date.getHours(), date.getMinutes());
                 events.add(new CarEvent(location, time, msg.getAltitude(), getSpeed(msg), msg.getTemperature(),
                         windSpeed, windDirection, humidity, direction, driverId,
@@ -49,15 +50,15 @@ public final class FitCarEventStreamer implements CarEventStream {
     }
 
     GeoLocation getLocation(RecordMesg msg) {
-        double lat = 0.0;
-        double longt = 0.0;
+        double latitude = 0.0;
+        double longitude = 0.0;
         if (msg.getPositionLat() != null) {
-            lat = msg.getPositionLat().doubleValue();
+            latitude = msg.getPositionLat().doubleValue();
         }
         if (msg.getPositionLong() != null) {
-            longt = msg.getPositionLong().doubleValue();
+            longitude = msg.getPositionLong().doubleValue();
         }
-        return new GeoLocation(lat, longt);
+        return new GeoLocation(latitude, longitude);
     }
 
     double getSpeed(RecordMesg msg) {

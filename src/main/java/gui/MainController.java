@@ -22,11 +22,14 @@ public class MainController {
         Container container = this.view.getContainer();
         Students students = new Students();
         List<Student> theStudents = students.listStudents();
-        JPanel listPanel = new JPanel(new GridLayout(theStudents.size(), 5));
+        JPanel listPanel = new JPanel(new GridLayout(theStudents.size(), 3));
 
         for (Student student: theStudents) {
-            // grid layout
-            JLabel label = new JLabel(student.toString());
+            JTextArea label = new JTextArea(student.getFirstName());
+            listPanel.add(label);
+            label = new JTextArea(student.getLastName());
+            listPanel.add(label);
+            label = new JTextArea(student.getEmail());
             listPanel.add(label);
         }
 
