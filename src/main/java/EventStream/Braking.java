@@ -15,7 +15,7 @@ public class Braking {
      * @param signals
      * @return
      */
-    List<LocalDateTime> detectBraking(List<CarEvent> signals) {
+    public List<LocalDateTime> detectBraking(List<CarEvent> signals) {
         ArrayList<CarEvent> brakingSignals = new ArrayList<>(signals);
 
         // first sort signals by time

@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+/*
+ A car event stream that reads the events from Garmin fit files.
+ Unfortunately, it doesn't support metrics for all sensors.
+ */
 public final class FitCarEventStreamer implements CarEventStream {
     private List<CarEvent> events = new ArrayList<>();
     private List<Consumer<CarEvent>> listeners = new ArrayList<>();
@@ -49,7 +53,7 @@ public final class FitCarEventStreamer implements CarEventStream {
         }
     }
 
-    GeoLocation getLocation(RecordMesg msg) {
+    private GeoLocation getLocation(RecordMesg msg) {
         double latitude = 0.0;
         double longitude = 0.0;
         if (msg.getPositionLat() != null) {
@@ -61,7 +65,7 @@ public final class FitCarEventStreamer implements CarEventStream {
         return new GeoLocation(latitude, longitude);
     }
 
-    double getSpeed(RecordMesg msg) {
+    private double getSpeed(RecordMesg msg) {
         double speed = 0.0;
         if (msg.getSpeed() != null) {
             speed = msg.getSpeed().doubleValue();
@@ -86,5 +90,9 @@ public final class FitCarEventStreamer implements CarEventStream {
     @Override
     public void start() {
 
+    }
+
+    public List<CarEvent> getEvents() {
+        return events;
     }
 }

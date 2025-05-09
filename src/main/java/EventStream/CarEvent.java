@@ -3,8 +3,9 @@ package EventStream;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-
-final class CarEvent {
+/// The central car event class. It contains fields for all sensor data.
+/// CarEventStream creates a stream of instances of this class.
+public final class CarEvent {
     private GeoLocation location;
     private LocalDateTime timestamp;
     private double height;
