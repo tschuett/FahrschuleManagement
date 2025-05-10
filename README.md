@@ -16,3 +16,12 @@ create table cars (id int NOT NULL AUTO_INCREMENT, driverId int DEFAULT -1, stud
                     PRIMARY KEY (id), 
                     FOREIGN KEY (driverId) REFERENCES teachers(id),
                     FOREIGN KEY (studentId) REFERENCES students(id));         
+                    
+                    
+                    
+```
+> find src/ -name '*.java' | xargs wc -l
+```
+
+922 total
+
