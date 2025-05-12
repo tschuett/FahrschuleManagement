@@ -1,43 +1,50 @@
 package gui;
 
-import Database.Student;
-import Database.Students;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 public class MainController {
-    private MainFrame view;
+    private final MainFrame view;
 
     public MainController() {
         this.view = new MainFrame();
         this.view.addActionListenerForListStudentsMenu(this::listenListStudentsMenu);
+        this.view.addActionListenerForListTeachersMenu(this::listenListTeachersMenu);
         this.view.addActionListenerForHelpMenu(this::listenHelpMenu);
         this.view.addActionListenerForExitMenu(this::listenExitMenu);
     }
 
     void listenListStudentsMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        Students students = new Students();
-        List<Student> theStudents = students.listStudents();
-        JPanel listPanel = new JPanel(new GridLayout(theStudents.size(), 3));
+        ListStudentsTableModel model = new ListStudentsTableModel();
 
-        for (Student student: theStudents) {
-            JTextArea label = new JTextArea(student.getFirstName());
-            listPanel.add(label);
-            label = new JTextArea(student.getLastName());
-            listPanel.add(label);
-            label = new JTextArea(student.getEmail());
-            listPanel.add(label);
-        }
+
+        JTable table = new JTable(model);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true);
 
         container.removeAll();
-        container.add(listPanel);
+        container.add(scrollPane);
     }
+
+    void listenListTeachersMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+        ListTeachersTableModel model = new ListTeachersTableModel();
+
+        JTable table = new JTable(model);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true);
+
+        container.removeAll();
+        container.add(scrollPane);
+    }
+
     /**
      * Listen for uses of the help menu entry. Print help text.
+     *
      * @param event
      */
     void listenHelpMenu(ActionEvent event) {
@@ -45,11 +52,10 @@ public class MainController {
         JPanel helpPanel = new JPanel();
         JTextArea out = new JTextArea();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Enter from/to accounts").append("\n");
-        sb.append("Enter money amount").append("\n");
+        String sb = "Enter from/to accounts" + "\n" +
+                "Enter money amount" + "\n";
 
-        out.setText(sb.toString());
+        out.setText(sb);
 
         helpPanel.add(out);
         container.removeAll();
@@ -58,6 +64,7 @@ public class MainController {
 
     /**
      * Listen for uses of the exit menu entry.
+     *
      * @param event
      */
     void listenExitMenu(ActionEvent event) {

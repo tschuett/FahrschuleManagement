@@ -18,7 +18,11 @@ public class StatisticsEventConsumer implements Consumer<CarEvent> {
         Double angle = mathematics.angleProductSpeedAndTemperature(events);
         System.out.println("Angle between speed and temperature: " + angle);
 
+        Double angleAlt = mathematics.angleProductSpeedAndAltitude(events);
+        System.out.println("Angle between speed and altitude: " + angleAlt);
+
         Weather weather = new Weather();
         System.out.println("Average temperature: " + weather.getAverageTemperature(events));
+        System.out.println("Average speed: " + mathematics.getAverageSpeed(events));
     }
 }

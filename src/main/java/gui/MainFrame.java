@@ -10,6 +10,7 @@ public class MainFrame extends JFrame {
     private final JMenuItem menuItemHelp;
     private final JMenuItem menuItemExit;
     private final JMenuItem menuItemListStudents;
+    private final JMenuItem menuItemListTeachers;
 
     public MainFrame() {
         this.container = this.getContentPane();
@@ -26,6 +27,8 @@ public class MainFrame extends JFrame {
 
         this.menuItemListStudents = new JMenuItem("List Students");
         menu.add(this.menuItemListStudents);
+        this.menuItemListTeachers = new JMenuItem("List Teachers");
+        menu.add(this.menuItemListTeachers);
         this.menuItemHelp = new JMenuItem("Help");
         menu.add(this.menuItemHelp);
         this.menuItemExit = new JMenuItem("Exit");
@@ -53,6 +56,10 @@ public class MainFrame extends JFrame {
 
     public void addActionListenerForListStudentsMenu(ActionListener l) {
         this.menuItemListStudents.addActionListener(l);
+    }
+
+    public void addActionListenerForListTeachersMenu(ActionListener l) {
+        this.menuItemListTeachers.addActionListener(l);
     }
 
     public void addActionListenerForHelpMenu(ActionListener l) {

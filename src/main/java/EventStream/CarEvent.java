@@ -71,4 +71,8 @@ public final class CarEvent {
     String getCarModel() {
         return carModel;
     }
+
+    double getAltitude() {
+        return height;
+    }
 }

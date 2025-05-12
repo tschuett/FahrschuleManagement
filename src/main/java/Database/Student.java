@@ -24,4 +24,14 @@ public final class Student {
     public String getEmail() {
         return email;
     }
+
+    public Object at(int index) {
+            switch (index) {
+               case 0: return id;
+               case 1: return firstName;
+               case 2: return lastName;
+               case 3: return email;
+               default: return null;
+            }
+    }
 }

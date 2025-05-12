@@ -1,6 +1,7 @@
 package EventStream;
 
 import com.garmin.fit.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -53,7 +54,7 @@ public final class FitCarEventStreamer implements CarEventStream {
         }
     }
 
-    private GeoLocation getLocation(RecordMesg msg) {
+    private GeoLocation getLocation(@NotNull RecordMesg msg) {
         double latitude = 0.0;
         double longitude = 0.0;
         if (msg.getPositionLat() != null) {
@@ -65,7 +66,7 @@ public final class FitCarEventStreamer implements CarEventStream {
         return new GeoLocation(latitude, longitude);
     }
 
-    private double getSpeed(RecordMesg msg) {
+    private double getSpeed(@NotNull RecordMesg msg) {
         double speed = 0.0;
         if (msg.getSpeed() != null) {
             speed = msg.getSpeed().doubleValue();
