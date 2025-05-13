@@ -4,15 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class MainController {
+public final class MainController {
     private final MainFrame view;
 
     public MainController() {
         this.view = new MainFrame();
+        this.view.addActionListenerForConfigMenu(this::listenConfigMenu);
         this.view.addActionListenerForListStudentsMenu(this::listenListStudentsMenu);
         this.view.addActionListenerForListTeachersMenu(this::listenListTeachersMenu);
+        this.view.addActionListenerForAddStudentMenu(this::listenAddStudentMenu);
         this.view.addActionListenerForHelpMenu(this::listenHelpMenu);
         this.view.addActionListenerForExitMenu(this::listenExitMenu);
+    }
+
+    void listenConfigMenu(ActionEvent event) {
+        ConfigDialog dialog = new ConfigDialog(this.view);
+        dialog.setLocationRelativeTo(this.view);
+        dialog.pack();
+        dialog.setVisible(true);
+
     }
 
     void listenListStudentsMenu(ActionEvent event) {
@@ -42,6 +52,25 @@ public class MainController {
         container.add(scrollPane);
     }
 
+    void listenAddStudentMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+        JPanel addStudentPanel = new JPanel(new GridLayout(4, 3));
+        addStudentPanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        addStudentPanel.add(new JLabel("Vorname"));
+        addStudentPanel.add(new JTextField());
+
+
+        addStudentPanel.add(new JLabel("Geschlecht"));
+        String[] genders = {"Neutral", "Männlich", "Weiblich"};
+        JComboBox<String> genderComboBox = new JComboBox<>(genders);
+        addStudentPanel.add(genderComboBox);
+        JButton button = new JButton("Speichern");
+        button.addActionListener(e -> {}); // FIXME
+        addStudentPanel.add(button);
+        container.removeAll();
+        container.add(addStudentPanel);
+    }
+
     /**
      * Listen for uses of the help menu entry. Print help text.
      *
@@ -52,8 +81,7 @@ public class MainController {
         JPanel helpPanel = new JPanel();
         JTextArea out = new JTextArea();
 
-        String sb = "Enter from/to accounts" + "\n" +
-                "Enter money amount" + "\n";
+        String sb = "Enter from/to accounts" + "\n" + "Enter money amount" + "\n";
 
         out.setText(sb);
 
