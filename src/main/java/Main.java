@@ -3,6 +3,7 @@ import gui.MainController;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 class Main {
 
@@ -34,6 +35,9 @@ class Main {
         for (LocalDateTime brake : brakes) {
             System.out.println(brake);
         }
+
+        Mathematics mathematics = new Mathematics();
+        mathematics.getHighestPoint(events).ifPresent(System.out::println);
     }
 
     void showGUI() {
@@ -43,7 +47,7 @@ class Main {
     public static void main(String[] args) {
         Main main = new Main();
 
-        //main.showStatistics();
-        main.showGUI();
+        main.showStatistics();
+        //main.showGUI();
     }
 }

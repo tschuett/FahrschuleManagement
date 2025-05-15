@@ -1,6 +1,7 @@
 package EventStream;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /// The central car event class. It contains fields for all sensor data.
@@ -52,8 +53,8 @@ public final class CarEvent {
         return customerId.isPresent();
     }
 
-    Long getCustomer() {
-        return customerId.get();
+    Long getCustomer() throws NoSuchElementException {
+        return customerId.orElseThrow();
     }
 
     double getSpeed() {
@@ -74,5 +75,13 @@ public final class CarEvent {
 
     double getAltitude() {
         return height;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public GeoLocation getLocation() {
+        return location;
     }
 }

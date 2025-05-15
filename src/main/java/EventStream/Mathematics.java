@@ -1,6 +1,12 @@
 package EventStream;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class Mathematics {
@@ -28,5 +34,23 @@ public class Mathematics {
 
     Double getAverageSpeed(List<CarEvent> events) {
         return events.stream().map(CarEvent::getSpeed).collect(Collectors.averagingDouble(Double::doubleValue));
+    }
+
+    public Optional<GeoLocation> getHighestPoint(List<CarEvent> events) {
+        Optional<CarEvent> result = events.stream().reduce(BinaryOperator.maxBy(new CarEventHeightComparator()));
+        return result.map(CarEvent::getLocation);
+    }
+
+    void getHistogramOfLocatioans(@NotNull List<CarEvent> events) {
+           List<GeoLocation> locations = events.stream().map(CarEvent::getLocation).distinct().sorted().toList();
+
+           Map<GeoLocation, Integer> histogram = new HashMap<>();
+           for (CarEvent event: events) {
+               if (histogram.containsKey(event.getLocation())) {
+                   histogram.put(event.getLocation(), histogram.get(event.getLocation()) + 1);
+               } else {
+                   histogram.put(event.getLocation(), 1);
+               }
+           }
     }
 }

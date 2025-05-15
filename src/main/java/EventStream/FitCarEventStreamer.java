@@ -15,8 +15,8 @@ import java.util.function.Consumer;
  Unfortunately, it doesn't support metrics for all sensors.
  */
 public final class FitCarEventStreamer implements CarEventStream {
-    private List<CarEvent> events = new ArrayList<>();
-    private List<Consumer<CarEvent>> listeners = new ArrayList<>();
+    private final List<CarEvent> events = new ArrayList<>();
+    private final List<Consumer<CarEvent>> listeners = new ArrayList<>();
 
     private static final double windSpeed = 10.0;
     private static final double windDirection = 10.0;
@@ -67,11 +67,10 @@ public final class FitCarEventStreamer implements CarEventStream {
     }
 
     private double getSpeed(@NotNull RecordMesg msg) {
-        double speed = 0.0;
         if (msg.getSpeed() != null) {
-            speed = msg.getSpeed().doubleValue();
+            return msg.getSpeed().doubleValue();
         }
-        return speed;
+        return 0.0;
     }
 
     @Override

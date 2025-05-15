@@ -13,6 +13,7 @@ public final class MainFrame extends JFrame {
     private final JMenuItem menuItemListStudents;
     private final JMenuItem menuItemListTeachers;
     private final JMenuItem menuItemAddStudent;
+    private final JMenuItem menuItemAddTeacher;
 
     public MainFrame() {
         this.container = this.getContentPane();
@@ -36,6 +37,8 @@ public final class MainFrame extends JFrame {
         menu.add(this.menuItemListTeachers);
         this.menuItemAddStudent = new JMenuItem("Add Student");
         menu.add(this.menuItemAddStudent);
+        this.menuItemAddTeacher = new JMenuItem("Add Teacher");
+        menu.add(this.menuItemAddTeacher);
         this.menuItemHelp = new JMenuItem("Help");
         menu.add(this.menuItemHelp);
         this.menuItemExit = new JMenuItem("Exit");
@@ -54,12 +57,6 @@ public final class MainFrame extends JFrame {
         return this.container;
     }
 
-    void showHelpPane() {
-        JPanel helpPanel = new JPanel();
-        this.container.removeAll();
-        this.container.add(helpPanel);
-    }
-
     public void addActionListenerForListStudentsMenu(ActionListener l) {
         this.menuItemListStudents.addActionListener(l);
     }
@@ -70,6 +67,10 @@ public final class MainFrame extends JFrame {
 
     public void addActionListenerForAddStudentMenu(ActionListener l) {
         this.menuItemAddStudent.addActionListener(l);
+    }
+
+    public void addActionListenerForAddTeacherMenu(ActionListener l) {
+        this.menuItemAddTeacher.addActionListener(l);
     }
 
     public void addActionListenerForHelpMenu(ActionListener l) {
