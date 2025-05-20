@@ -37,7 +37,16 @@ class Main {
         }
 
         Mathematics mathematics = new Mathematics();
-        mathematics.getHighestPoint(events).ifPresent(System.out::println);
+        Optional<GeoLocation> high = mathematics.getHighestPoint(events);
+        Optional<GeoLocation> low = mathematics.getLowestPoint(events);
+        if (high.isPresent() && low.isPresent()) {
+            System.out.println("High: " + high.get());
+            System.out.println("Low: " + low.get());
+            System.out.println(GeoLocation.distance(high.get(), low.get()));
+        }
+        else {
+            System.out.println("No high or low point found.");
+        }
     }
 
     void showGUI() {

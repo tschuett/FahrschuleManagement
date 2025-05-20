@@ -1,5 +1,7 @@
 package EventStream;
 
+import org.jetbrains.annotations.NotNull;
+
 public class GeoLocation {
     private final double latitude;
     private final double longitude;
@@ -23,5 +25,9 @@ public class GeoLocation {
                 "latitude=" + latitude +
                 ", longitude=" + longitude +
                 '}';
+    }
+
+    public static double distance(@NotNull GeoLocation a, @NotNull GeoLocation b) {
+        return Math.abs(a.getLatitude() - b.getLatitude()) + Math.abs(a.getLongitude() - b.getLongitude());
     }
 }

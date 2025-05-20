@@ -41,16 +41,21 @@ public class Mathematics {
         return result.map(CarEvent::getLocation);
     }
 
-    void getHistogramOfLocatioans(@NotNull List<CarEvent> events) {
-           List<GeoLocation> locations = events.stream().map(CarEvent::getLocation).distinct().sorted().toList();
+    public Optional<GeoLocation> getLowestPoint(List<CarEvent> events) {
+        Optional<CarEvent> result = events.stream().reduce(BinaryOperator.minBy(new CarEventHeightComparator()));
+        return result.map(CarEvent::getLocation);
+    }
 
-           Map<GeoLocation, Integer> histogram = new HashMap<>();
-           for (CarEvent event: events) {
-               if (histogram.containsKey(event.getLocation())) {
-                   histogram.put(event.getLocation(), histogram.get(event.getLocation()) + 1);
-               } else {
-                   histogram.put(event.getLocation(), 1);
-               }
-           }
+    void getHistogramOfLocatioans(@NotNull List<CarEvent> events) {
+        List<GeoLocation> locations = events.stream().map(CarEvent::getLocation).distinct().sorted().toList();
+
+        Map<GeoLocation, Integer> histogram = new HashMap<>();
+        for (CarEvent event : events) {
+            if (histogram.containsKey(event.getLocation())) {
+                histogram.put(event.getLocation(), histogram.get(event.getLocation()) + 1);
+            } else {
+                histogram.put(event.getLocation(), 1);
+            }
+        }
     }
 }

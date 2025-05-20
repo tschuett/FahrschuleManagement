@@ -2,8 +2,8 @@ package Database;
 
 import java.sql.*;
 
-
-public class DBConnection {
+/// A cache for MySQL connections.
+final class DBConnection {
     private static Connection connection = null;
 
 

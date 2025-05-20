@@ -45,7 +45,9 @@ public class Students {
         }
         return Optional.empty();
         }
-
+/*
+    List the students in the students table.
+ */
     public List<Student> listStudents() {
         List<Student> students = new ArrayList<>();
 

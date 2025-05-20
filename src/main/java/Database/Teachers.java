@@ -25,6 +25,7 @@ public class Teachers {
         return Optional.empty();
     }
 
+    /// List the teacher's in the teachers table.
     public List<Teacher> listTeachers() {
         List<Teacher> teachers = new ArrayList<>();
 
