@@ -5,6 +5,9 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The frame draws the menu items and provides access to install listeners for each menu item.
+ */
 public final class MainFrame extends JFrame {
     private final Container container;
     private final JMenuItem menuItemConfig;
@@ -24,6 +27,7 @@ public final class MainFrame extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(4, 3));
         Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
+        panel.setBorder(border);
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
@@ -57,27 +61,27 @@ public final class MainFrame extends JFrame {
         return this.container;
     }
 
-    public void addActionListenerForListStudentsMenu(ActionListener l) {
+     void addActionListenerForListStudentsMenu(ActionListener l) {
         this.menuItemListStudents.addActionListener(l);
     }
 
-    public void addActionListenerForListTeachersMenu(ActionListener l) {
+    void addActionListenerForListTeachersMenu(ActionListener l) {
         this.menuItemListTeachers.addActionListener(l);
     }
 
-    public void addActionListenerForAddStudentMenu(ActionListener l) {
+    void addActionListenerForAddStudentMenu(ActionListener l) {
         this.menuItemAddStudent.addActionListener(l);
     }
 
-    public void addActionListenerForAddTeacherMenu(ActionListener l) {
+    void addActionListenerForAddTeacherMenu(ActionListener l) {
         this.menuItemAddTeacher.addActionListener(l);
     }
 
-    public void addActionListenerForHelpMenu(ActionListener l) {
+    void addActionListenerForHelpMenu(ActionListener l) {
         this.menuItemHelp.addActionListener(l);
     }
 
-    public void addActionListenerForConfigMenu(ActionListener l) {
+    void addActionListenerForConfigMenu(ActionListener l) {
         this.menuItemConfig.addActionListener(l);
     }
 
@@ -86,7 +90,7 @@ public final class MainFrame extends JFrame {
      *
      * @param l
      */
-    public void addActionListenerForExitMenu(ActionListener l) {
+    void addActionListenerForExitMenu(ActionListener l) {
         this.menuItemExit.addActionListener(l);
     }
 }

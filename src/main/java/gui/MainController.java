@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * The controller installs listeners in the view for menu items. For each menu item a method is called.
+ * The methods draw visual elements in the view accordingly.
+ */
 public final class MainController {
     private final MainFrame view;
 
@@ -26,6 +30,10 @@ public final class MainController {
 
     }
 
+    /**
+     * Draws the list of students when the list item is clicked.
+     * @param event the event of the menu click.
+     */
     private void listenListStudentsMenu(ActionEvent event) {
         Container container = this.view.getContainer();
         ListStudentsTableModel model = new ListStudentsTableModel();
@@ -40,6 +48,10 @@ public final class MainController {
         container.add(scrollPane);
     }
 
+    /**
+     * Draws the list of teachers when the list item is clicked in the menu.
+     * @param event the event of the menu click.
+     */
     private void listenListTeachersMenu(ActionEvent event) {
         Container container = this.view.getContainer();
         ListTeachersTableModel model = new ListTeachersTableModel();
@@ -116,7 +128,7 @@ public final class MainController {
     /**
      * Listen for uses of the help menu entry. Print help text.
      *
-     * @param event
+     * @param event the event when the help menu item is clicked.
      */
     private void listenHelpMenu(ActionEvent event) {
         Container container = this.view.getContainer();
