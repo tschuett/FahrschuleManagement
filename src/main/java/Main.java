@@ -32,6 +32,7 @@ class Main {
 
         Braking braking = new Braking();
         List<LocalDateTime> brakes = braking.detectBraking(events);
+        System.out.println("Number of braking points: " + brakes.size());
         for (LocalDateTime brake : brakes) {
             System.out.println(brake);
         }
@@ -40,9 +41,10 @@ class Main {
         Optional<GeoLocation> high = mathematics.getHighestPoint(events);
         Optional<GeoLocation> low = mathematics.getLowestPoint(events);
         if (high.isPresent() && low.isPresent()) {
+            System.out.println("Note the E in the GeoLocations");
             System.out.println("High: " + high.get());
             System.out.println("Low: " + low.get());
-            System.out.println(GeoLocation.distance(high.get(), low.get()));
+            System.out.println("Distance: " + GeoLocation.distance(high.get(), low.get()));
         }
         else {
             System.out.println("No high or low point found.");

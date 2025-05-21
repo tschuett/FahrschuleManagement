@@ -7,7 +7,7 @@ public final class Student {
     private final String lastName;
     private final String email;
 
-    Student(int id, String firstName, String lastName, String email) {
+    public Student(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,6 +24,10 @@ public final class Student {
 
     public String getEmail() {
         return email;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /// Index for abstract tables @see javax.swing.table.AbstractTableModel

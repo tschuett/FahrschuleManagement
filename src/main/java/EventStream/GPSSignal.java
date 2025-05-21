@@ -3,10 +3,15 @@ package EventStream;
 import java.time.LocalDateTime;
 
 public class GPSSignal {
-    private GeoLocation location;
-    private double speed;
-    private LocalDateTime time;
+    private final GeoLocation location;
+    private final double speed;
+    private final LocalDateTime time;
 
+    GPSSignal(GeoLocation location, double speed, LocalDateTime time) {
+        this.location = location;
+        this.speed = speed;
+        this.time = time;
+    }
 
     LocalDateTime getTime() {
         return time;

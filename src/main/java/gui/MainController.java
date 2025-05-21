@@ -1,5 +1,8 @@
 package gui;
 
+import Database.Students;
+import Database.Teachers;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -86,15 +89,15 @@ public final class MainController {
         JButton button = new JButton("Speichern");
         button.addActionListener(e -> {
             saveStudent(firstName.getText(), lastName.getText(), email.getText(), teacherId.getText());
-        }); // FIXME
+        });
         addStudentPanel.add(button);
         container.removeAll();
         container.add(addStudentPanel);
     }
 
     private void saveStudent(String firstName, String lastName, String email, String teacherId) {
-
-        // FIXME
+        Students studentsDAO = new Students();
+        studentsDAO.addStudent(firstName, lastName, email, teacherId);
     }
 
     private void listenAddTeacherMenu(ActionEvent event) {
@@ -114,7 +117,7 @@ public final class MainController {
         JButton button = new JButton("Speichern");
         button.addActionListener(e -> {
             saveTeacher(firstName.getText(), lastName.getText(), email.getText());
-        }); // FIXME
+        });
         addTeacherPanel.add(button);
 
         container.removeAll();
@@ -122,7 +125,8 @@ public final class MainController {
     }
 
     private void saveTeacher(String firstName, String lastName, String email) {
-        // FIXME
+        Teachers teachersDAO = new Teachers();
+        teachersDAO.addTeacher(firstName, lastName, email);
     }
 
     /**
@@ -146,6 +150,7 @@ public final class MainController {
         out.setWrapStyleWord(true);
 
         helpPanel.add(out);
+        helpPanel.setVisible(true);
         container.removeAll();
         container.add(helpPanel);
     }

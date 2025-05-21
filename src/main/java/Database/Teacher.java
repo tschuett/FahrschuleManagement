@@ -7,7 +7,7 @@ public final class Teacher {
     private String lastName;
     private String email;
 
-    Teacher(int id, String firstName, String lastName, String email) {
+    public Teacher(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,5 +23,9 @@ public final class Teacher {
             case 3 -> email;
             default -> null;
         };
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 }

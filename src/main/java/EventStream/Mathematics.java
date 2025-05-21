@@ -16,7 +16,11 @@ public class Mathematics {
         return events.stream().map((CarEvent event) -> event.getSpeed() * event.getTemperature()).reduce(0.0, Double::sum);
     }
 
-    // Returns the angle between speed and temperature.
+    /**
+     * Returns the angle between the speed and temperature.
+     * @param events
+     * @return
+     */
     Double angleProductSpeedAndTemperature(List<CarEvent> events) {
         // The dot product of the speed and temperature vectors.
         Double dot = events.stream().map((CarEvent event) -> event.getSpeed() * event.getTemperature()).reduce(0.0, Double::sum);
@@ -24,7 +28,9 @@ public class Mathematics {
         return Math.acos(div); // the arc cosine of a value
     }
 
-    // Returns the angle between speed and altitude.
+    /**
+     * Returns the angle between speed and altitude.
+     */
     Double angleProductSpeedAndAltitude(List<CarEvent> events) {
         // The dot product of the speed and altitude vectors.
         Double dot = events.stream().map((CarEvent event) -> event.getSpeed() * event.getAltitude()).reduce(0.0, Double::sum);
@@ -32,18 +38,35 @@ public class Mathematics {
         return Math.acos(div); // the arc cosine of a value
     }
 
+    /**
+     * Returns the average over all events in the list.
+     *
+     * @param events
+     * @return
+     */
     Double getAverageSpeed(List<CarEvent> events) {
         return events.stream().map(CarEvent::getSpeed).collect(Collectors.averagingDouble(Double::doubleValue));
     }
 
+    /**
+     * Returns the highest point of the event list.
+     *
+     * @param events a list of car events
+     * @return
+     */
     public Optional<GeoLocation> getHighestPoint(List<CarEvent> events) {
         Optional<CarEvent> result = events.stream().reduce(BinaryOperator.maxBy(new CarEventHeightComparator()));
         return result.map(CarEvent::getLocation);
     }
 
+    /**
+     * Returns the lowest point of the event list.
+     *
+     * @param events
+     * @return
+     */
     public Optional<GeoLocation> getLowestPoint(List<CarEvent> events) {
-        Optional<CarEvent> result = events.stream().reduce(BinaryOperator.minBy(new CarEventHeightComparator()));
-        return result.map(CarEvent::getLocation);
+        return events.stream().reduce(BinaryOperator.minBy(new CarEventHeightComparator())).map(CarEvent::getLocation);
     }
 
     void getHistogramOfLocatioans(@NotNull List<CarEvent> events) {

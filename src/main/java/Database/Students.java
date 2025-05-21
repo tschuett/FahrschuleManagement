@@ -67,4 +67,18 @@ public class Students {
         }
         return students;
     }
+
+    public void addStudent(String firstname, String lastname, String email, String teacherId) {
+        try (Connection c = DBConnection.getConnection()) {
+            String insert = "INSERT INTO students (firstname, lastname, email, teacher) VALUES (?, ?, ?, ?)";
+            PreparedStatement p = c.prepareStatement(insert);
+            p.setString(1, firstname);
+            p.setString(2, lastname);
+            p.setString(3, email);
+            p.setInt(4, Integer.parseInt(teacherId));
+            p.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

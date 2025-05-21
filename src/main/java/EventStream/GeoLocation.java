@@ -6,7 +6,7 @@ public class GeoLocation {
     private final double latitude;
     private final double longitude;
 
-    GeoLocation(double latitude, double longitude) {
+    public GeoLocation(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
