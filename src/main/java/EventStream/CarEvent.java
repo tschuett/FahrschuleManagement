@@ -22,9 +22,9 @@ public final class CarEvent {
     private Optional<Long> customerId;
     private Optional<Double> customerHearbeat;
 
-    CarEvent(GeoLocation location, LocalDateTime timestamp, double height, double speed, double temperature,
-             double windSpeed, double windDirection, double humidity, double direction, long driverId, String carModel,
-             long carId, Optional<Long> customerId, Optional<Double> customerHearbeat) {
+    public CarEvent(GeoLocation location, LocalDateTime timestamp, double height, double speed, double temperature,
+                    double windSpeed, double windDirection, double humidity, double direction, long driverId, String carModel,
+                    long carId, Optional<Long> customerId, Optional<Double> customerHearbeat) {
         this.location = location;
         this.timestamp = timestamp;
         this.height = height;
