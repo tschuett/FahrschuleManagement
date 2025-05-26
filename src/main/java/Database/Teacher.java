@@ -1,18 +1,7 @@
 package Database;
 
 /// Represents a row in the teacher's table.
-public final class Teacher {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-
-    public Teacher(int id, String firstName, String lastName, String email) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
+public record Teacher (int id, String firstName, String lastName, String email) {
 
     /// Index for abstract tables for JTables.
     public Object at(int index) {
@@ -23,9 +12,5 @@ public final class Teacher {
             case 3 -> email;
             default -> null;
         };
-    }
-
-    public String getFirstName() {
-        return firstName;
     }
 }

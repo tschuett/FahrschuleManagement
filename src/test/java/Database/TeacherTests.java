@@ -10,7 +10,7 @@ public class TeacherTests {
     @Test
     void firstName() {
         Teacher teacher = new Teacher(5, "Karl", "Hummel", "karl@apple.de");
-        assertEquals("Karl", teacher.getFirstName());
+        assertEquals("Karl", teacher.firstName());
     }
 
     @Test

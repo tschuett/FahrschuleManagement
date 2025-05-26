@@ -1,8 +1,5 @@
 package gui;
 
-import Database.Students;
-import Database.Teachers;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -35,17 +32,13 @@ public final class MainController {
 
     /**
      * Draws the list of students when the list item is clicked.
+     *
      * @param event the event of the menu click.
      */
     private void listenListStudentsMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        ListStudentsTableModel model = new ListStudentsTableModel();
 
-
-        JTable table = new JTable(model);
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        table.setFillsViewportHeight(true);
+        JScrollPane scrollPane = new ListStudents();
 
         container.removeAll();
         container.add(scrollPane);
@@ -53,80 +46,32 @@ public final class MainController {
 
     /**
      * Draws the list of teachers when the list item is clicked in the menu.
+     *
      * @param event the event of the menu click.
      */
     private void listenListTeachersMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        ListTeachersTableModel model = new ListTeachersTableModel();
 
-        JTable table = new JTable(model);
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        table.setFillsViewportHeight(true);
+        JScrollPane listTeachers = new ListTeachers();
 
         container.removeAll();
-        container.add(scrollPane);
+        container.add(listTeachers);
     }
 
     private void listenAddStudentMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        JPanel addStudentPanel = new JPanel(new GridLayout(4, 2));
-        addStudentPanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        addStudentPanel.add(new JLabel("Vorname"));
-        JTextField firstName = new JTextField();
-        addStudentPanel.add(firstName);
-        addStudentPanel.add(new JLabel("Nachname"));
-        JTextField lastName = new JTextField();
-        addStudentPanel.add(lastName);
-        addStudentPanel.add(new JLabel("EMail"));
-        JTextField email = new JTextField();
-        addStudentPanel.add(email);
-        addStudentPanel.add(new JLabel("Lehrer ID"));
-        JTextField teacherId = new JTextField();
-        addStudentPanel.add(teacherId);
 
-
-        JButton button = new JButton("Speichern");
-        button.addActionListener(e -> {
-            saveStudent(firstName.getText(), lastName.getText(), email.getText(), teacherId.getText());
-        });
-        addStudentPanel.add(button);
+        JPanel addStudentPanel = new AddStudent();
         container.removeAll();
         container.add(addStudentPanel);
     }
 
-    private void saveStudent(String firstName, String lastName, String email, String teacherId) {
-        Students studentsDAO = new Students();
-        studentsDAO.addStudent(firstName, lastName, email, teacherId);
-    }
-
     private void listenAddTeacherMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        JPanel addTeacherPanel = new JPanel(new GridLayout(4, 2));
-        addTeacherPanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        addTeacherPanel.add(new JLabel("Vorname"));
-        JTextField firstName = new JTextField();
-        addTeacherPanel.add(firstName);
-        addTeacherPanel.add(new JLabel("Nachname"));
-        JTextField lastName = new JTextField();
-        addTeacherPanel.add(lastName);
-        addTeacherPanel.add(new JLabel("EMail"));
-        JTextField email = new JTextField();
-        addTeacherPanel.add(email);
 
-        JButton button = new JButton("Speichern");
-        button.addActionListener(e -> {
-            saveTeacher(firstName.getText(), lastName.getText(), email.getText());
-        });
-        addTeacherPanel.add(button);
-
+        JPanel addTeacher = new AddTeacher();
         container.removeAll();
-        container.add(addTeacherPanel);
-    }
-
-    private void saveTeacher(String firstName, String lastName, String email) {
-        Teachers teachersDAO = new Teachers();
-        teachersDAO.addTeacher(firstName, lastName, email);
+        container.add(addTeacher);
     }
 
     /**
@@ -136,21 +81,8 @@ public final class MainController {
      */
     private void listenHelpMenu(ActionEvent event) {
         Container container = this.view.getContainer();
-        JPanel helpPanel = new JPanel();
-        JTextArea out = new JTextArea();
+        JPanel helpPanel = new HelpPanel();
 
-        String helpText = """
-                Try the list views before the add views. The add views often need id's, which can be found in the list views.
-                
-                When adding a student, you need to provide the teacher id. You can find the teacher id in the list view of teachers.
-                """;
-
-        out.setText(helpText);
-        out.setLineWrap(true);
-        out.setWrapStyleWord(true);
-
-        helpPanel.add(out);
-        helpPanel.setVisible(true);
         container.removeAll();
         container.add(helpPanel);
     }
