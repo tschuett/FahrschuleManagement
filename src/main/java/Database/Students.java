@@ -48,7 +48,7 @@ public class Students {
 
     /**
      * List the students in the students table.
-     * @return
+     * @return the current students
      */
     public List<Student> listStudents() {
         List<Student> students = new ArrayList<>();

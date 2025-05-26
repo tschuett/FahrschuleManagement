@@ -1,10 +1,10 @@
-package gui;
+package gui.panels;
 
 import javax.swing.*;
 
-class ListTeachers extends JScrollPane {
+public final class ListTeachers extends JScrollPane {
 
-    ListTeachers() {
+    public ListTeachers() {
         ListTeachersTableModel model = new ListTeachersTableModel();
         JTable table = new JTable(model);
         setViewportView(table);

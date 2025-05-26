@@ -1,11 +1,11 @@
-package gui;
+package gui.panels;
 
 import javax.swing.*;
 import java.awt.*;
 
-final class ConfigDialog extends JDialog {
+public final class ConfigDialog extends JDialog {
 
-    ConfigDialog(JFrame owner) {
+    public ConfigDialog(JFrame owner) {
         super(owner, true);
 
         setTitle("Config");

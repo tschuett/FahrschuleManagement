@@ -18,10 +18,10 @@ public class Mathematics {
 
     /**
      * Returns the angle between the speed and temperature.
-     * @param events
+     * @param events list of car events, must have at least one event.
      * @return
      */
-    Double angleProductSpeedAndTemperature(List<CarEvent> events) {
+    Double angleProductSpeedAndTemperature(final List<CarEvent> events) {
         // The dot product of the speed and temperature vectors.
         Double dot = events.stream().map((CarEvent event) -> event.getSpeed() * event.getTemperature()).reduce(0.0, Double::sum);
         double div = dot / (events.size() * events.size());

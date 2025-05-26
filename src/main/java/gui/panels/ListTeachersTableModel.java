@@ -1,4 +1,4 @@
-package gui;
+package gui.panels;
 
 import Database.Teacher;
 import Database.Teachers;

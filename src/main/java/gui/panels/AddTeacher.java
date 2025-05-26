@@ -1,13 +1,13 @@
-package gui;
+package gui.panels;
 
-import Database.Students;
+import Database.Teachers;
 
 import javax.swing.*;
 import java.awt.*;
 
-final class AddStudent extends JPanel {
+public final class AddTeacher extends JPanel {
 
-    AddStudent() {
+    public AddTeacher(){
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         add(new JLabel("Vorname"));
         JTextField firstName = new JTextField();
@@ -18,21 +18,17 @@ final class AddStudent extends JPanel {
         add(new JLabel("EMail"));
         JTextField email = new JTextField();
         add(email);
-        add(new JLabel("Lehrer ID"));
-        JTextField teacherId = new JTextField();
-        add(teacherId);
-
 
         JButton button = new JButton("Speichern");
         button.addActionListener(e -> {
-            saveStudent(firstName.getText(), lastName.getText(), email.getText(), teacherId.getText());
+            saveTeacher(firstName.getText(), lastName.getText(), email.getText());
         });
         add(button);
         setLayout(new GridLayout(4, 2));
     }
 
-    private void saveStudent(String firstName, String lastName, String email, String teacherId) {
-        Students studentsDAO = new Students();
-        studentsDAO.addStudent(firstName, lastName, email, teacherId);
+    private void saveTeacher(String firstName, String lastName, String email) {
+        Teachers teachersDAO = new Teachers();
+        teachersDAO.addTeacher(firstName, lastName, email);
     }
 }
