@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Model a list of teachers for a JTable
  */
-public class ListTeachersTableModel extends AbstractTableModel {
+class ListTeachersTableModel extends AbstractTableModel {
     private final List<Teacher> teachers;
 
     ListTeachersTableModel() {

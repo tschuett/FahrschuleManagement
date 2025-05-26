@@ -2,7 +2,7 @@ package gui;
 
 import javax.swing.*;
 
-public class ListStudents extends JScrollPane {
+final class ListStudents extends JScrollPane {
 
     ListStudents() {
         ListStudentsTableModel model = new ListStudentsTableModel();

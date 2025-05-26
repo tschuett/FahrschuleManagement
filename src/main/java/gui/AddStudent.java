@@ -5,7 +5,7 @@ import Database.Students;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddStudent extends JPanel {
+final class AddStudent extends JPanel {
 
     AddStudent() {
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));

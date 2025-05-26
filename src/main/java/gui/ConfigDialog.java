@@ -3,7 +3,7 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public final class ConfigDialog extends JDialog {
+final class ConfigDialog extends JDialog {
 
     ConfigDialog(JFrame owner) {
         super(owner, true);

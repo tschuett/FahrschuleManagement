@@ -5,7 +5,7 @@ import Database.Teachers;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddTeacher extends JPanel {
+final class AddTeacher extends JPanel {
 
     AddTeacher(){
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));

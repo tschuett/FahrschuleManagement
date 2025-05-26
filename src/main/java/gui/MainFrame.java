@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * The frame draws the menu items and provides access to install listeners for each menu item.
  */
-public final class MainFrame extends JFrame {
+final class MainFrame extends JFrame {
     private final Container container;
     private final JMenuItem menuItemConfig;
     private final JMenuItem menuItemHelp;
