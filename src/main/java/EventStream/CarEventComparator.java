@@ -2,9 +2,9 @@ package EventStream;
 
 import java.util.Comparator;
 
-public class CarEventComparator implements Comparator<CarEvent> {
+public final class CarEventComparator implements Comparator<CarEvent> {
     @Override
     public int compare(CarEvent o1, CarEvent o2) {
-        return 0;
+        return o1.getTimeStamp().compareTo(o2.getTimeStamp());
     }
 }

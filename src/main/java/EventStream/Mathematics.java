@@ -18,7 +18,7 @@ public class Mathematics {
 
     /**
      * Returns the angle between the speed and temperature.
-     * @param events list of car events, must have at least one event.
+     * @param events the list of car events must have at least one event.
      * @return
      */
     Double angleProductSpeedAndTemperature(final List<CarEvent> events) {

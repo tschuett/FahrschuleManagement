@@ -3,11 +3,11 @@ package EventStream;
 import java.util.function.Consumer;
 
 ///  Represents a stream of car events, see jdk.jfr.consumer.EventStream.
-interface CarEventStream {
+sealed interface CarEventStream permits CSVCarEventStreamer, FitCarEventStreamer {
 
     void onEvent(Consumer<CarEvent> action);
 
     void awaitTermination();
 
-    void start() ;
+    void start();
 }

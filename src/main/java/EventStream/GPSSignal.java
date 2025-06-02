@@ -2,7 +2,7 @@ package EventStream;
 
 import java.time.LocalDateTime;
 
-public class GPSSignal {
+public final class GPSSignal {
     private final GeoLocation location;
     private final double speed;
     private final LocalDateTime time;

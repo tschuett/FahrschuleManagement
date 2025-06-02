@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 /// Event consumer that collects statistics over the event stream.
 public class StatisticsEventConsumer implements Consumer<CarEvent> {
-    ArrayList<CarEvent> events = new ArrayList<>();
+    private final ArrayList<CarEvent> events = new ArrayList<>();
 
 
     @Override

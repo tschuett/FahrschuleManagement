@@ -3,7 +3,7 @@ package EventStream;
 import java.util.Comparator;
 
 /// Compares the height of two car events.
-public class CarEventHeightComparator implements Comparator<CarEvent> {
+public final class CarEventHeightComparator implements Comparator<CarEvent> {
     @Override
     public int compare(CarEvent o1, CarEvent o2) {
         if (o1.getHeight() < o2.getHeight())

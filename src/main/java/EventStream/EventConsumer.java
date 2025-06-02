@@ -5,9 +5,10 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class EventConsumer implements Consumer<CarEvent> {
-    private ArrayList<CarEvent> events = new ArrayList<>();
+    private final ArrayList<CarEvent> events = new ArrayList<>();
 
 
+    @Override
     public void accept(CarEvent event) {
         events.add(event);
     }

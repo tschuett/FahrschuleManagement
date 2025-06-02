@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class CSVCarEventStreamer implements CarEventStream {
+public final class CSVCarEventStreamer implements CarEventStream {
     ArrayList<CarEvent> events = new ArrayList<>();
     ArrayList<Consumer<CarEvent>> listeners = new ArrayList<>();
 

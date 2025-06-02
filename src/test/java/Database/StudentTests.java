@@ -9,7 +9,7 @@ public class StudentTests {
     @Test
     void id() {
         Student student = new Student(4, "Hans", "Lauter", "lauter@gmail.com");
-        assertEquals(4, student.getId());
+        assertEquals(4, student.id());
     }
 
     @Test
@@ -21,6 +21,6 @@ public class StudentTests {
     @Test
     void email() {
         Student student = new Student(4, "Hans", "Lauter", "hans@gmail.com");
-        assertEquals("hans@gmail.com", student.getEmail());
+        assertEquals("hans@gmail.com", student.email());
     }
 }

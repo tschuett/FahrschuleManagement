@@ -2,6 +2,7 @@ package gui.panels;
 
 
 import javax.swing.*;
+import java.awt.*;
 
 public final class ListStudents extends JScrollPane {
 
@@ -10,5 +11,6 @@ public final class ListStudents extends JScrollPane {
         JTable table = new JTable(model);
         setViewportView(table);
         table.setFillsViewportHeight(true);
+        setBackground(Color.DARK_GRAY);
     }
 }
