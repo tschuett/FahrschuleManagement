@@ -20,11 +20,11 @@ public final class CarEvent {
     private String carModel;
     private long carId;
     private Optional<Long> customerId;
-    private Optional<Double> customerHearbeat;
+    private Optional<Double> customerHeartbeat;
 
     public CarEvent(GeoLocation location, LocalDateTime timestamp, double height, double speed, double temperature,
                     double windSpeed, double windDirection, double humidity, double direction, long driverId, String carModel,
-                    long carId, Optional<Long> customerId, Optional<Double> customerHearbeat) {
+                    long carId, Optional<Long> customerId, Optional<Double> customerHeartbeat) {
         this.location = location;
         this.timestamp = timestamp;
         this.height = height;
@@ -38,7 +38,7 @@ public final class CarEvent {
         this.carModel = carModel;
         this.carId = carId;
         this.customerId = customerId;
-        this.customerHearbeat = customerHearbeat;
+        this.customerHeartbeat = customerHeartbeat;
     }
 
     double getWindSpeed() {
