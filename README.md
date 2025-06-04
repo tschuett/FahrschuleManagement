@@ -28,5 +28,5 @@ insert into students (firstname, lastname, email, teacher) VALUES ("Kerstin", "B
 > find src/ -name '*.java' | xargs wc -l
 ```
 
-1334 total
+16063 total
 
