@@ -20,6 +20,8 @@ public final class MainController {
         this.view.addActionListenerForListTeachersMenu(this::listenListTeachersMenu);
         this.view.addActionListenerForAddStudentMenu(this::listenAddStudentMenu);
         this.view.addActionListenerForAddTeacherMenu(this::listenAddTeacherMenu);
+        this.view.addActionListenerForSpeedMenu(this::listenSpeedMenu);
+        this.view.addActionListenerForTemperatureMenu(this::listenTemperatureMenu);
         this.view.addActionListenerForHelpMenu(this::listenHelpMenu);
         this.view.addActionListenerForExitMenu(this::listenExitMenu);
     }
@@ -74,6 +76,22 @@ public final class MainController {
         JPanel addTeacher = new AddTeacher();
         container.removeAll();
         container.add(addTeacher);
+    }
+
+    private void listenSpeedMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+
+        JPanel drawSpeed = new SpeedPanel();
+        container.removeAll();
+        container.add(drawSpeed);
+    }
+
+    private void listenTemperatureMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+
+        JPanel drawTemperature = new TemperaturePanel();
+        container.removeAll();
+        container.add(drawTemperature);
     }
 
     /**

@@ -12,7 +12,7 @@ final class DBConnection {
             try {
                 connection = DriverManager.getConnection(Settings.URL, Settings.USER, Settings.PASSWORD);
             } catch (SQLException ex) {
-                System.out.println("Verbindung konnte nicht hergestellt werden");
+                System.out.println("Verbindung konnte nicht hergestellt werden: " + ex.getMessage());
             }
         }
         return connection;

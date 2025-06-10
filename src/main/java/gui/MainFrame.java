@@ -17,6 +17,8 @@ final class MainFrame extends JFrame {
     private final JMenuItem menuItemListTeachers;
     private final JMenuItem menuItemAddStudent;
     private final JMenuItem menuItemAddTeacher;
+    private final JMenuItem menuItemSpeed;
+    private final JMenuItem menuItemTemperature;
 
     public MainFrame() {
         this.container = this.getContentPane();
@@ -43,6 +45,10 @@ final class MainFrame extends JFrame {
         menu.add(this.menuItemAddStudent);
         this.menuItemAddTeacher = new JMenuItem("Add Teacher");
         menu.add(this.menuItemAddTeacher);
+        this.menuItemSpeed = new JMenuItem("Speed");
+        menu.add(this.menuItemSpeed);
+        this.menuItemTemperature = new JMenuItem("Temperature");
+        menu.add(this.menuItemTemperature);
         this.menuItemHelp = new JMenuItem("Help");
         menu.add(this.menuItemHelp);
         this.menuItemExit = new JMenuItem("Exit");
@@ -75,6 +81,14 @@ final class MainFrame extends JFrame {
 
     void addActionListenerForAddTeacherMenu(ActionListener l) {
         this.menuItemAddTeacher.addActionListener(l);
+    }
+
+    void addActionListenerForSpeedMenu(ActionListener l) {
+        this.menuItemSpeed.addActionListener(l);
+    }
+
+    void addActionListenerForTemperatureMenu(ActionListener l) {
+        this.menuItemTemperature.addActionListener(l);
     }
 
     void addActionListenerForHelpMenu(ActionListener l) {

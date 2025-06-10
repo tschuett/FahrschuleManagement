@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Mathematics {
 
 
-    Double dotProductSpeedAndTemperature(List<CarEvent> events) {
+    Double dotProductSpeedAndTemperature(@NotNull List<CarEvent> events) {
         return events.stream().map((CarEvent event) -> event.getSpeed() * event.getTemperature()).reduce(0.0, Double::sum);
     }
 
@@ -21,7 +21,7 @@ public class Mathematics {
      * @param events the list of car events must have at least one event.
      * @return
      */
-    Double angleProductSpeedAndTemperature(final List<CarEvent> events) {
+    Double angleProductSpeedAndTemperature(@NotNull List<CarEvent> events) {
         // The dot product of the speed and temperature vectors.
         Double dot = events.stream().map((CarEvent event) -> event.getSpeed() * event.getTemperature()).reduce(0.0, Double::sum);
         double div = dot / (events.size() * events.size());
