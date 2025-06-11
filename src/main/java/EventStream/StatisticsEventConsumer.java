@@ -3,7 +3,10 @@ package EventStream;
 import org.jfree.data.xy.XYSeries;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /// Event consumer that collects statistics over the event stream.
@@ -33,7 +36,7 @@ public class StatisticsEventConsumer implements Consumer<CarEvent> {
         XYSeries speedXYSeries = new XYSeries("Speed");
         for (CarEvent carEvent : events) {
             LocalDateTime localDateTime = carEvent.getTimeStamp();
-            double timeStamp = localDateTime.getSecond() + 60 * localDateTime.getMinute() + 60 * 24 * localDateTime.getHour();
+            double timeStamp = getAsSeconds(localDateTime);
             speedXYSeries.add(timeStamp, carEvent.getSpeed());
         }
         return speedXYSeries;
@@ -44,9 +47,38 @@ public class StatisticsEventConsumer implements Consumer<CarEvent> {
         XYSeries speedXYSeries = new XYSeries("Temperature");
         for (CarEvent carEvent : events) {
             LocalDateTime localDateTime = carEvent.getTimeStamp();
-            double timeStamp = localDateTime.getSecond() + 60 * localDateTime.getMinute() + 60 * 24 * localDateTime.getHour();
+            double timeStamp = getAsSeconds(localDateTime);
             speedXYSeries.add(timeStamp, carEvent.getTemperature());
         }
         return speedXYSeries;
+    }
+
+    public XYSeries getHeartBeatXYSeries() {
+        XYSeries speedXYSeries = new XYSeries("Heartbeat");
+        for (CarEvent carEvent : events) {
+            LocalDateTime localDateTime = carEvent.getTimeStamp();
+            double timeStamp = getAsSeconds(localDateTime);
+            Optional<Double> heartBeat = carEvent.getCustomerHeartbeat();
+            heartBeat.ifPresent((Double aDouble) -> speedXYSeries.add(timeStamp, aDouble));
+        }
+        return speedXYSeries;
+    }
+
+    public XYSeries getHeightXYSeries() {
+        XYSeries speedXYSeries = new XYSeries("Temperature");
+        for (CarEvent carEvent : events) {
+            LocalDateTime localDateTime = carEvent.getTimeStamp();
+            double timeStamp = getAsSeconds(localDateTime);
+            speedXYSeries.add(timeStamp, carEvent.getHeight());
+        }
+        return speedXYSeries;
+    }
+
+    private double getAsSeconds(LocalDateTime time) {
+        return time.toEpochSecond(ZoneOffset.UTC);
+    }
+
+     public List<CarEvent> getEvents() {
+        return events;
     }
 }

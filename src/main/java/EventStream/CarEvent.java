@@ -61,7 +61,7 @@ public final class CarEvent {
         return speed;
     }
 
-    LocalDateTime getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timestamp;
     }
 
@@ -83,5 +83,9 @@ public final class CarEvent {
 
     public GeoLocation getLocation() {
         return location;
+    }
+
+    public Optional<Double> getCustomerHeartbeat() {
+        return customerHeartbeat;
     }
 }

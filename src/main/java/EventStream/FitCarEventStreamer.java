@@ -31,7 +31,7 @@ public final class FitCarEventStreamer implements CarEventStream {
         try {
             FileInputStream inputStream = new FileInputStream(path);
 
-            System.out.println(inputStream.available());
+            System.out.println("Records: " + inputStream.available());
             FitDecoder fitDecoder = new FitDecoder();
             FitMessages fitMessages =  fitDecoder.decode(inputStream);
 

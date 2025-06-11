@@ -19,6 +19,9 @@ final class MainFrame extends JFrame {
     private final JMenuItem menuItemAddTeacher;
     private final JMenuItem menuItemSpeed;
     private final JMenuItem menuItemTemperature;
+    private final JMenuItem menuItemBraking;
+    private final JMenuItem menuItemHeartBeat;
+    private final JMenuItem menuItemHeight;
 
     public MainFrame() {
         this.container = this.getContentPane();
@@ -33,22 +36,39 @@ final class MainFrame extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
+        JMenu menuStatistics = new JMenu("Statistics");
+        JMenu menuMngmt = new JMenu("Management");
 
 
         this.menuItemConfig = new JMenuItem("Config");
         menu.add(this.menuItemConfig);
         this.menuItemListStudents = new JMenuItem("List Students");
-        menu.add(this.menuItemListStudents);
+        menuMngmt.add(this.menuItemListStudents);
         this.menuItemListTeachers = new JMenuItem("List Teachers");
-        menu.add(this.menuItemListTeachers);
+        menuMngmt.add(this.menuItemListTeachers);
         this.menuItemAddStudent = new JMenuItem("Add Student");
-        menu.add(this.menuItemAddStudent);
+        menuMngmt.add(this.menuItemAddStudent);
         this.menuItemAddTeacher = new JMenuItem("Add Teacher");
-        menu.add(this.menuItemAddTeacher);
+        menuMngmt.add(this.menuItemAddTeacher);
         this.menuItemSpeed = new JMenuItem("Speed");
-        menu.add(this.menuItemSpeed);
+        menuStatistics.add(this.menuItemSpeed);
         this.menuItemTemperature = new JMenuItem("Temperature");
-        menu.add(this.menuItemTemperature);
+        menuStatistics.add(this.menuItemTemperature);
+        this.menuItemHeartBeat = new JMenuItem("Heartbeat");
+        menuStatistics.add(this.menuItemHeartBeat);
+        this.menuItemBraking = new JMenuItem("Braking");
+        menuStatistics.add(this.menuItemBraking);
+        this.menuItemHeight = new JMenuItem("Height");
+        menuStatistics.add(this.menuItemHeight);
+
+        menu.addSeparator();
+        menu.add(menuMngmt);
+        menu.addSeparator();
+
+        menu.addSeparator();
+        menu.add(menuStatistics);
+        menu.addSeparator();
+
         this.menuItemHelp = new JMenuItem("Help");
         menu.add(this.menuItemHelp);
         this.menuItemExit = new JMenuItem("Exit");
@@ -67,7 +87,7 @@ final class MainFrame extends JFrame {
         return this.container;
     }
 
-     void addActionListenerForListStudentsMenu(ActionListener l) {
+    void addActionListenerForListStudentsMenu(ActionListener l) {
         this.menuItemListStudents.addActionListener(l);
     }
 
@@ -91,12 +111,24 @@ final class MainFrame extends JFrame {
         this.menuItemTemperature.addActionListener(l);
     }
 
+    void addActionListenerForBrakingMenu(ActionListener l) {
+        this.menuItemBraking.addActionListener(l);
+    }
+
     void addActionListenerForHelpMenu(ActionListener l) {
         this.menuItemHelp.addActionListener(l);
     }
 
     void addActionListenerForConfigMenu(ActionListener l) {
         this.menuItemConfig.addActionListener(l);
+    }
+
+    void addActionListenerForHeartBeatMenu(ActionListener l) {
+        this.menuItemHeartBeat.addActionListener(l);
+    }
+
+    void addActionListenerForHeightMenu(ActionListener l) {
+        this.menuItemHeight.addActionListener(l);
     }
 
     /**
