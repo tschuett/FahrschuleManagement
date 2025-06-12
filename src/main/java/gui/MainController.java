@@ -23,6 +23,7 @@ public final class MainController {
         this.view.addActionListenerForSpeedMenu(this::listenSpeedMenu);
         this.view.addActionListenerForTemperatureMenu(this::listenTemperatureMenu);
         this.view.addActionListenerForBrakingMenu(this::listenBrakingMenu);
+        this.view.addActionListenerForBrakingGPSMenu(this::listenBrakingGPSMenu);
         this.view.addActionListenerForHeartBeatMenu(this::listenHeartBeatMenu);
         this.view.addActionListenerForHeightMenu(this::listenHeightMenu);
         this.view.addActionListenerForHelpMenu(this::listenHelpMenu);
@@ -103,6 +104,14 @@ public final class MainController {
         JPanel drawBraking = new BrakingPanel();
         container.removeAll();
         container.add(drawBraking);
+    }
+
+    private void listenBrakingGPSMenu(ActionEvent event) {
+        Container container = this.view.getContainer();
+
+        JPanel drawBrakingGPS = new BrakingPanelGPS();
+        container.removeAll();
+        container.add(drawBrakingGPS);
     }
 
     private void listenHeartBeatMenu(ActionEvent event) {

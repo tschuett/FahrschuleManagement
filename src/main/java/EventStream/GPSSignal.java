@@ -13,11 +13,18 @@ public final class GPSSignal {
         this.time = time;
     }
 
-    LocalDateTime getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
     double getSpeed() {
         return speed;
+    }
+
+    public GeoLocation getLocation() { return  location; }
+
+    @Override
+    public String toString() {
+        return "location: " + location.toString() + " speed: " + speed + " time: " + time.toString();
     }
 }

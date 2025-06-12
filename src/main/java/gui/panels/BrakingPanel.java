@@ -1,9 +1,6 @@
 package gui.panels;
 
-import EventStream.Braking;
-import EventStream.CarEvent;
-import EventStream.FitCarEventStreamer;
-import EventStream.StatisticsEventConsumer;
+import EventStream.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.xy.XYDataset;
@@ -13,15 +10,15 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Comparator;
 import java.util.List;
+
+import static gui.panels.Settings.FILE;
 
 public class BrakingPanel extends ChartPanel {
 
     private static final int NON_BRAKING = 1000;
     private static final int BRAKING = 4000;
 
-    private static final String FILE = "src/main/resources/Burg_Rabenstein.fit";
 
     public BrakingPanel() {
         super(ChartFactory.createXYLineChart("Braking", "Time", "Brake!", getDataset()));
@@ -36,19 +33,19 @@ public class BrakingPanel extends ChartPanel {
         List<CarEvent> events = statisticsEventConsumer.getEvents();
 
         Braking brak = new Braking();
-        List<LocalDateTime> points = brak.detectBraking(events);
+        List<GPSSignal> points = brak.detectBraking(events);
 
         XYSeries speedXYSeries = new XYSeries("Braking");
 
-        points.sort(Comparator.naturalOrder());
+        points.sort(new GPSSignalComparator());
 
         for (int i = 1; i < points.size(); i++) {
-            Duration diff = Duration.between(points.get(i - 1), points.get(i));
+            Duration diff = Duration.between(points.get(i - 1).getTime(), points.get(i).getTime());
             Duration middle = diff.dividedBy(2);
-            speedXYSeries.add(getAsSeconds(points.get(i-1)), BRAKING);
-            speedXYSeries.add(getAsSeconds((LocalDateTime) middle.addTo(points.get(i-1))), NON_BRAKING);
+            speedXYSeries.add(getAsSeconds(points.get(i-1).getTime()), BRAKING);
+            speedXYSeries.add(getAsSeconds((LocalDateTime) middle.addTo(points.get(i-1).getTime())), NON_BRAKING);
         }
-        speedXYSeries.add(getAsSeconds(points.getLast()), BRAKING);
+        speedXYSeries.add(getAsSeconds(points.getLast().getTime()), BRAKING);
 
 
         return new XYSeriesCollection(speedXYSeries);

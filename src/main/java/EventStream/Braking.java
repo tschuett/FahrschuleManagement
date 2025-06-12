@@ -15,13 +15,13 @@ public final class Braking {
      * @param signals
      * @return
      */
-    public List<LocalDateTime> detectBraking(List<CarEvent> signals) {
+    public List<GPSSignal> detectBraking(List<CarEvent> signals) {
         ArrayList<CarEvent> brakingSignals = new ArrayList<>(signals);
         // first sort signals by time
         brakingSignals.sort(Comparator.comparing(CarEvent::getTimeStamp));
 
 
-        ArrayList<LocalDateTime> brakePoints = new ArrayList<>();
+        ArrayList<GPSSignal> brakePoints = new ArrayList<>();
         for (int i = 0; i < brakingSignals.size() - 2; i++) {
             CarEvent current = brakingSignals.get(i);
             CarEvent next = brakingSignals.get(i + 1);
@@ -34,7 +34,7 @@ public final class Braking {
             if (speedDifference > 0.0 && secondsDifference > 0.0) {
                 double speedReductionPerSecond = speedDifference / secondsDifference;
                 if (speedReductionPerSecond > BRAKING_LIMIT) {
-                    brakePoints.add(current.getTimeStamp());
+                    brakePoints.add(current.getGPSSignal());
                 }
             }
         }

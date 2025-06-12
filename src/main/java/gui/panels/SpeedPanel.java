@@ -8,9 +8,9 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class SpeedPanel extends ChartPanel {
+import static gui.panels.Settings.FILE;
 
-    static final String FILE = "src/main/resources/Burg_Rabenstein.fit";
+public class SpeedPanel extends ChartPanel {
 
     public SpeedPanel() {
         super(ChartFactory.createXYLineChart("Speed", "Time", "Speed", getDataset()));

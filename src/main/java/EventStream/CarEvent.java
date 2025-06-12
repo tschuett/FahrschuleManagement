@@ -88,4 +88,8 @@ public final class CarEvent {
     public Optional<Double> getCustomerHeartbeat() {
         return customerHeartbeat;
     }
+
+    public GPSSignal getGPSSignal() {
+        return new GPSSignal(location, speed, timestamp);
+    }
 }

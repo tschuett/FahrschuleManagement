@@ -31,9 +31,9 @@ class Main {
         }
 
         Braking braking = new Braking();
-        List<LocalDateTime> brakes = braking.detectBraking(events);
+        List<GPSSignal> brakes = braking.detectBraking(events);
         System.out.println("Number of braking points: " + brakes.size());
-        for (LocalDateTime brake : brakes) {
+        for (GPSSignal brake : brakes) {
             System.out.println(brake);
         }
 

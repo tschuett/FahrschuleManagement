@@ -8,9 +8,9 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class HeightPanel extends ChartPanel {
+import static gui.panels.Settings.FILE;
 
-    static final String FILE = "src/main/resources/Burg_Rabenstein.fit";
+public class HeightPanel extends ChartPanel {
 
     public HeightPanel() {
         super(ChartFactory.createXYLineChart("Height", "Time", "Height", getDataset()));

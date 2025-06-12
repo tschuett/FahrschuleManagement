@@ -8,9 +8,9 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class HeartBeatPanel extends ChartPanel {
+import static gui.panels.Settings.FILE;
 
-    static final String FILE = "src/main/resources/Burg_Rabenstein.fit";
+public class HeartBeatPanel extends ChartPanel {
 
     public HeartBeatPanel() {
         super(ChartFactory.createXYLineChart("Heartbeat", "Time", "Heartbeat", getDataset()));

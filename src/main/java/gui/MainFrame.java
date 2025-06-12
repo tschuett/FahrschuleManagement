@@ -20,6 +20,7 @@ final class MainFrame extends JFrame {
     private final JMenuItem menuItemSpeed;
     private final JMenuItem menuItemTemperature;
     private final JMenuItem menuItemBraking;
+    private final JMenuItem menuItemBrakingGPS;
     private final JMenuItem menuItemHeartBeat;
     private final JMenuItem menuItemHeight;
 
@@ -58,6 +59,8 @@ final class MainFrame extends JFrame {
         menuStatistics.add(this.menuItemHeartBeat);
         this.menuItemBraking = new JMenuItem("Braking");
         menuStatistics.add(this.menuItemBraking);
+        this.menuItemBrakingGPS = new JMenuItem("Braking GPS");
+        menuStatistics.add(this.menuItemBrakingGPS);
         this.menuItemHeight = new JMenuItem("Height");
         menuStatistics.add(this.menuItemHeight);
 
@@ -113,6 +116,9 @@ final class MainFrame extends JFrame {
 
     void addActionListenerForBrakingMenu(ActionListener l) {
         this.menuItemBraking.addActionListener(l);
+    }
+    void addActionListenerForBrakingGPSMenu(ActionListener l) {
+        this.menuItemBrakingGPS.addActionListener(l);
     }
 
     void addActionListenerForHelpMenu(ActionListener l) {
