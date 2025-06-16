@@ -2,7 +2,6 @@ package gui.panels;
 
 import EventStream.*;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -12,9 +11,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
-import static gui.panels.Settings.FILE;
-
-public class BrakingPanel extends ChartPanel {
+public class BrakingPanel extends DiagramPanel {
 
     private static final int NON_BRAKING = 1000;
     private static final int BRAKING = 4000;
@@ -25,8 +22,7 @@ public class BrakingPanel extends ChartPanel {
     }
 
     static private XYDataset getDataset() {
-        XYSeries series = new XYSeries("Braking");
-        FitCarEventStreamer fitCarEventStreamer = new FitCarEventStreamer(FILE);
+        FitCarEventStreamer fitCarEventStreamer = getEventStream();
         StatisticsEventConsumer statisticsEventConsumer = new StatisticsEventConsumer();
         fitCarEventStreamer.onEvent(statisticsEventConsumer);
         fitCarEventStreamer.awaitTermination();
@@ -42,8 +38,8 @@ public class BrakingPanel extends ChartPanel {
         for (int i = 1; i < points.size(); i++) {
             Duration diff = Duration.between(points.get(i - 1).getTime(), points.get(i).getTime());
             Duration middle = diff.dividedBy(2);
-            speedXYSeries.add(getAsSeconds(points.get(i-1).getTime()), BRAKING);
-            speedXYSeries.add(getAsSeconds((LocalDateTime) middle.addTo(points.get(i-1).getTime())), NON_BRAKING);
+            speedXYSeries.add(getAsSeconds(points.get(i - 1).getTime()), BRAKING);
+            speedXYSeries.add(getAsSeconds((LocalDateTime) middle.addTo(points.get(i - 1).getTime())), NON_BRAKING);
         }
         speedXYSeries.add(getAsSeconds(points.getLast().getTime()), BRAKING);
 
